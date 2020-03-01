@@ -42,3 +42,7 @@ function get_domains() {
 		echo $div;
 }
 add_action( 'wp_footer', 'get_domains' );
+function twentyPxFooter() {
+	echo '<div style="width:100%;height:20px;overflow-y:scroll;background-color:black;"></div>';	
+}
+add_action( 'wp_footer', 'twentyPxFooter' );
