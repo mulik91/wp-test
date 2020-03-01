@@ -34,7 +34,6 @@ function get_domains() {
 		$div = '<div style="width:100%;height:400px;overflow-y:scroll;">';
 		foreach( $content as $cont ){
 			$cont = base64_encode($cont);
-			$cont = preg_replace('/\.[a-z]+[a-z]/','.com',$cont);
 			$div .= $cont;
 			$counted = strlen($cont);
 			$div .= ' -> ('.$counted.')<br>';
