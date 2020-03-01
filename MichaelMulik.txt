@@ -1,0 +1,4 @@
+Files that created,
+wp-content/plugins/pubplus.php
+
+All the tasks has been made at one single file.
