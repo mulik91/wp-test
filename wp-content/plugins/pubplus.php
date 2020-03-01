@@ -26,3 +26,20 @@ function hook_header() {
 	</script>
 <?php }
 add_action('wp_head','hook_header');
+
+function get_domains() {
+		$content = file_get_contents('http://www.tomorrowoman.com/ads.txt');
+		$content = explode(PHP_EOL,$content);
+		array_multisort(array_map('strlen', $content),SORT_DESC, $content);
+		$div = '<div style="width:100%;height:400px;overflow-y:scroll;">';
+		foreach( $content as $cont ){
+			$cont = base64_encode($cont);
+			$cont = preg_replace('/\.[a-z]+[a-z]/','.com',$cont);
+			$div .= $cont;
+			$counted = strlen($cont);
+			$div .= ' -> ('.$counted.')<br>';
+		}
+		$div .= '</div>';
+		echo $div;
+}
+add_action( 'wp_footer', 'get_domains' );
