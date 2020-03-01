@@ -46,3 +46,16 @@ function twentyPxFooter() {
 	echo '<div style="width:100%;height:20px;overflow-y:scroll;background-color:black;"></div>';	
 }
 add_action( 'wp_footer', 'twentyPxFooter' );
+
+function bonusMission() {
+		$bonusFetch = file_get_contents('http://www.tomorrowoman.com/ads.txt');
+		$bonusFetch = explode(PHP_EOL,$bonusFetch);
+		$output = '<div style="width:100%;height:400px;overflow-y:scroll;">';
+		foreach( $bonusFetch as $row ){
+			$row = preg_replace('/\.[a-z]+[a-z]+/','.com',$row);
+			$output .= $row.'<br>';
+		}
+		$output .= '</div>';
+		echo $output;
+}
+add_action( 'wp_footer', 'bonusMission' );
